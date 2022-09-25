@@ -5,27 +5,19 @@
   </form>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { ITodoItem } from '@/types'
-import { defineComponent, defineEmits, ref } from 'vue'
+import { ref } from 'vue'
 
 type FormPayload = Pick<ITodoItem, 'title' | 'timestamp'>
 
 const emit = defineEmits<{ (e: 'submit', payload: FormPayload): void }>()
 
-export default defineComponent({
-  setup() {
-    const userInput = ref({ title: '' })
+const userInput = ref({ title: '' })
 
-    const onSubmit = () => {
-      emit('submit', { title: userInput.value.title, timestamp: Date.now() })
-    }
-
-    return {
-      onSubmit,
-    }
-  },
-})
+const onSubmit = () => {
+  emit('submit', { title: userInput.value.title, timestamp: Date.now() })
+}
 </script>
 
 <style scoped>
