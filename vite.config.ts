@@ -1,18 +1,7 @@
-const path = require('path')
+import { defineConfig } from 'vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
+import vue from '@vitejs/plugin-vue'
 
-function pathResolve(dir: string) {
-  return path.resolve(process.cwd(), '.', dir)
-}
-
-export default () => {
-  return {
-    resolve: {
-      alias: [
-        {
-          find: /\/@\//,
-          replacement: pathResolve('src') + '/',
-        },
-      ],
-    },
-  }
-}
+export default defineConfig({
+  plugins: [tsconfigPaths(), vue()],
+})
