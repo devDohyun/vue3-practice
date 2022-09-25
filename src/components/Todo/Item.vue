@@ -2,17 +2,9 @@
   <div class="todo_item">{{ item }}</div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { ITodoItem } from '@/types'
-import { defineComponent, defineProps } from 'vue'
+import { defineProps } from 'vue'
 
-const props = defineProps<{ item: ITodoItem }>({
-  item: { required: true },
-})
-
-export default defineComponent({
-  setup() {
-    return { item: props.item }
-  },
-})
+const { item } = defineProps<{ item: ITodoItem }>()
 </script>
