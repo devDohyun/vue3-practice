@@ -6,16 +6,18 @@ type FormPayload = Pick<TodoItem, 'title' | 'timestamp'>
 
 const emit = defineEmits<{ (e: 'submit', payload: FormPayload): void }>()
 
-const userInput = ref({ title: '' })
+const userInput = ref('')
 
 const onSubmit = () => {
-  emit('submit', { title: userInput.value.title, timestamp: Date.now() })
+  emit('submit', { title: userInput.value, timestamp: Date.now() })
+
+  userInput.value = ''
 }
 </script>
 
 <template>
   <form @submit.prevent="onSubmit">
-    <input type="text" />
+    <input v-model="userInput" type="text" />
     <button type="submit">Submit</button>
   </form>
 </template>
