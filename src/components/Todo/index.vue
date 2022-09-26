@@ -85,4 +85,11 @@ const onItemDelete = (payload: TodoItem) => {
   background-color: #333333;
   color: white;
 }
+
+@media (max-width: 767px) {
+  .content_container {
+    grid-template-columns: auto;
+    grid-template-rows: repeat(2, auto);
+  }
+}
 </style>
