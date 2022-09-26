@@ -1,15 +1,13 @@
 {
-  "include": ["./src/**/*", "vite.config.js"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.*"],
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
     "moduleResolution": "node",
-    "baseUrl": "./src",
     "paths": {
-      "@/*": ["./*"],
-      "~/*": ["./*"]
+      "@/*": ["./src/*"]
     }
   },
   "exclude": ["node_modules", "dist"],
