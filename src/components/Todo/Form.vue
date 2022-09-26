@@ -1,15 +1,8 @@
-<template>
-  <form @submit.prevent="onSubmit">
-    <input type="text" />
-    <button type="submit">Submit</button>
-  </form>
-</template>
-
 <script lang="ts" setup>
-import { ITodoItem } from '@/types'
+import type { TodoItem } from '@/types'
 import { ref } from 'vue'
 
-type FormPayload = Pick<ITodoItem, 'title' | 'timestamp'>
+type FormPayload = Pick<TodoItem, 'title' | 'timestamp'>
 
 const emit = defineEmits<{ (e: 'submit', payload: FormPayload): void }>()
 
@@ -19,6 +12,13 @@ const onSubmit = () => {
   emit('submit', { title: userInput.value.title, timestamp: Date.now() })
 }
 </script>
+
+<template>
+  <form @submit.prevent="onSubmit">
+    <input type="text" />
+    <button type="submit">Submit</button>
+  </form>
+</template>
 
 <style scoped>
 input {
