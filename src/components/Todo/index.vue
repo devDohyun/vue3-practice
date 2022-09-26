@@ -43,8 +43,12 @@ const onItemDelete = (payload: TodoItem) => {
     <Form @submit="onFormSubmit"></Form>
     <div class="content_container">
       <div class="list_container">
-        <template v-for="item in todoList" :key="item.timestamp">
-          <Item @edit="onItemEdit" @delete="onItemDelete" :item="item" />
+        <template v-if="!todoList">로딩중 ...</template>
+        <template v-else-if="todoList.length === 0">아무 Item이 없어요 :)</template>
+        <template v-else>
+          <template v-for="item in todoList" :key="item.timestamp">
+            <Item @edit="onItemEdit" @delete="onItemDelete" :item="item" />
+          </template>
         </template>
       </div>
       <div class="code_block">
