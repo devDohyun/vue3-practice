@@ -75,8 +75,11 @@ const onItemEdit = (payload: TodoItem) => {
   align-items: center;
   justify-content: center;
 
-  background-color: #333333;
+  padding: 10px;
 
+  font-size: 14px;
+
+  background-color: #333333;
   color: white;
 }
 </style>
