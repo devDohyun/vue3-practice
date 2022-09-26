@@ -32,6 +32,9 @@ watch(todoList, (newValue) => setLocalStorageData(newValue ?? []))
 const onItemEdit = (payload: TodoItem) => {
   todoList.value = (todoList.value as TodoItem[]).map((x) => (x.timestamp === payload.timestamp ? payload : x))
 }
+const onItemDelete = (payload: TodoItem) => {
+  todoList.value = (todoList.value as TodoItem[]).filter((x) => x !== payload)
+}
 </script>
 
 <template>
@@ -41,7 +44,7 @@ const onItemEdit = (payload: TodoItem) => {
     <div class="content_container">
       <div class="list_container">
         <template v-for="item in todoList" :key="item.timestamp">
-          <Item @edit="onItemEdit" :item="item" />
+          <Item @edit="onItemEdit" @delete="onItemDelete" :item="item" />
         </template>
       </div>
       <div class="code_block">
