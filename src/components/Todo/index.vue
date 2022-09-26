@@ -28,6 +28,10 @@ const onFormSubmit = (payload: { title: string; timestamp: number }) => {
 
 onMounted(fetchLocalStorageData)
 watch(todoList, (newValue) => setLocalStorageData(newValue ?? []))
+
+const onItemEdit = (payload: TodoItem) => {
+  todoList.value = (todoList.value as TodoItem[]).map((x) => (x.timestamp === payload.timestamp ? payload : x))
+}
 </script>
 
 <template>
@@ -36,7 +40,7 @@ watch(todoList, (newValue) => setLocalStorageData(newValue ?? []))
     <Form @submit="onFormSubmit"></Form>
     <div class="list_container">
       <template v-for="item in todoList" :key="item.timestamp">
-        <Item :item="item" />
+        <Item @edit="onItemEdit" :item="item" />
       </template>
     </div>
   </div>
