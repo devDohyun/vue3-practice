@@ -38,16 +38,45 @@ const onItemEdit = (payload: TodoItem) => {
   <div class="todo_container">
     <h2>Vue 3 Todo app</h2>
     <Form @submit="onFormSubmit"></Form>
-    <div class="list_container">
-      <template v-for="item in todoList" :key="item.timestamp">
-        <Item @edit="onItemEdit" :item="item" />
-      </template>
+    <div class="content_container">
+      <div class="list_container">
+        <template v-for="item in todoList" :key="item.timestamp">
+          <Item @edit="onItemEdit" :item="item" />
+        </template>
+      </div>
+      <div class="code_block">
+        <div>
+          [
+          <template v-for="item in todoList" :key="item.timestamp">
+            <div>{{ item }}</div></template
+          >
+          ]
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.list_container {
+.content_container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  grid-gap: 20px;
+
   margin-top: 50px;
+  padding: 20px;
+}
+.list_container {
+  width: 100%;
+}
+.code_block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #333333;
+
+  color: white;
 }
 </style>
