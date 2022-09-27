@@ -20,8 +20,8 @@ const setLocalStorageData = (data: TodoItem[]) => {
 }
 const fetchLocalStorageData = () => (todoList.value = getLocalStorageData() || [])
 
-const onFormSubmit = (payload: { title: string; timestamp: number }) => {
-  const item = { ...payload, isDone: false }
+const onFormSubmit = (payload: Pick<TodoItem, 'title' | 'timestamp'>) => {
+  const item: TodoItem = { ...payload, isDone: false }
 
   todoList.value = [...(todoList.value as TodoItem[]), item]
 }
