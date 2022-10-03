@@ -10,12 +10,6 @@ const emit = defineEmits<{
 const { item } = defineProps<{ item: TodoItem }>()
 const draft = reactive({ ...item })
 
-const onCheckboxChange = (e: Event) => {
-  const { target } = e
-
-  draft.isDone = (target as HTMLInputElement).checked as boolean
-}
-
 watch(draft, (newValue) => {
   emit('edit', newValue)
 })
@@ -27,7 +21,7 @@ const onDeleteButtonClick = () => {
 
 <template>
   <div class="todo_item">
-    <input type="checkbox" :selected="draft.isDone" @change="onCheckboxChange" />
+    <input type="checkbox" v-model="draft.isDone" />
     <input type="text" v-model="draft.title" />
     <button type="button" @click="onDeleteButtonClick">삭제</button>
   </div>
