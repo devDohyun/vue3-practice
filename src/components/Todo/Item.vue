@@ -54,6 +54,8 @@ input[type='text'] {
   padding: 5px 10px;
 
   font-size: 16px;
+
+  border: 1px solid black;
 }
 button {
   padding: 5px 10px;

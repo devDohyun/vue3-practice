@@ -29,6 +29,8 @@ input {
   padding: 10px;
 
   font-size: 18px;
+
+  border: 1px solid black;
 }
 
 button {
